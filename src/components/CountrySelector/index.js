@@ -1,38 +1,25 @@
-import { useEffect, useState } from "react";
-import { Row, Col, Select } from "antd";
-import { getAllContries } from "../../api";
+import { Row, Col, Select, Form, Typography } from "antd";
 
-function CountrySelector() {
-  const [countries, setCountries] = useState([]);
-  //   const [initCountry, setInitCountry] = useState({});
-
-  useEffect(() => {
-    getAllContries().then((country) => {
-      setCountries(country.data);
-    });
-  }, []);
-
-  const handleCountryChange = (e) => {
-    console.log(e);
-  };
-
+function CountrySelector({ countries, handleCountryChange, value }) {
   return (
     <Row>
       <Col span={24}>
-        <Select
-          style={{
-            minWidth: 200,
-          }}
-          onChange={handleCountryChange}
-        >
-          {countries &&
-            countries.length &&
-            countries.map((country) => (
-              <Select.Option key={country.Slug}>
-                {country.Country}
-              </Select.Option>
-            ))}
-        </Select>
+        <Form layout="vertical" colon={false} style={{ maxWidth: 500 }}>
+          <Form.Item label="Quốc Gia">
+            <Select style={{}} value={value} onChange={handleCountryChange}>
+              {countries &&
+                countries.length &&
+                countries.map((country) => (
+                  <Select.Option key={country.Slug} value={country.Slug}>
+                    {country.Country}
+                  </Select.Option>
+                ))}
+            </Select>
+            <Typography.Paragraph type="secondary">
+              Lựa chọn một quốc gia
+            </Typography.Paragraph>
+          </Form.Item>
+        </Form>
       </Col>
     </Row>
   );

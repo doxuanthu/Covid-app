@@ -1,5 +1,7 @@
 import axios from "axios";
 
-const endpoint = "https://api.covid19api.com/";
+export const getAllContries = () =>
+  axios.get(`https://api.covid19api.com/countries`);
 
-export const getAllContries = () => axios.get(`${endpoint}countries`);
+export const getReportByCountry = (Slug) =>
+  axios.get(`https://api.covid19api.com/dayone/country/${Slug}`);
