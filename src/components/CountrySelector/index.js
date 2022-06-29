@@ -6,7 +6,7 @@ function CountrySelector({ countries, handleCountryChange, value }) {
       <Col span={24}>
         <Form layout="vertical" colon={false} style={{ maxWidth: 500 }}>
           <Form.Item label="Quốc Gia">
-            <Select style={{}} value={value} onChange={handleCountryChange}>
+            <Select value={value} onChange={handleCountryChange}>
               {countries &&
                 countries.length &&
                 countries.map((country) => (
